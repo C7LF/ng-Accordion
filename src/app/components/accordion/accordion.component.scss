@@ -1,0 +1,87 @@
+@mixin fface($path, $family) {
+    @font-face {
+      font-family: $family;
+      src: local($family), url($path) format('truetype');
+    }
+}
+
+@include fface('../../../assets/fonts/oswald-bold.ttf', 'OswaldBold');
+@include fface('../../../assets/fonts/oswald-light.ttf', 'OswaldLight');
+@include fface('../../../assets/fonts/oswald-regular.ttf', 'OswaldReg');
+
+.accordion {
+    max-width:700px;
+    margin:0 auto;
+    font-family: OswaldReg, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color:#1b1d1b;
+
+    @media(max-width: 756px) {
+        padding:0px 15px;
+    }
+
+    &-title {
+        font-family: OswaldBold;
+        text-transform: uppercase;
+        border-bottom: 15px solid #1b1d1b;
+        padding-bottom:15px;
+    }
+    &__question {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        padding: 15px 10px;
+        
+        &:hover {
+            cursor: pointer;
+        }
+
+        .question-num {
+            flex: 0 0 8%;
+            font-family: OswaldBold;
+            font-size:1.5em
+        }
+
+        .question-text {
+            flex: 1;
+
+            @media(max-width:600px) {
+                padding:0px 10px;
+            }
+        }
+
+        .question-toggle {
+            margin-left: auto;
+            text-align: right;
+
+            &__svg {
+                background-color: #fed230;
+                padding:5px 5px 2px 5px;
+
+                svg {
+                    width: 25px;
+                    height: 21px;
+                    transition: transform .6s ease;
+                }
+            }
+        }
+    }
+
+    &__answer {
+        transition: max-height .6s ease;
+        padding:0px 10px;
+        border-bottom:2px solid #000;
+        max-height: 0;
+        overflow: hidden;
+    }
+}
+
+
+/* Active states */
+.active .question-toggle__svg svg {
+    transform: rotate(45deg);
+}
+.active {
+    background-color: #a9a9a9;
+}

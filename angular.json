@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-accordion"
+    }
+  },
+  "defaultProject": "ng-accordion",
+  "cli": {
+    "analytics": false
+  }
 }
